@@ -6,3 +6,7 @@ import { Component } from '@angular/core';
   <h1>Recipe Box</h1>
   `
 })
+
+export class AppComponent {
+
+}
