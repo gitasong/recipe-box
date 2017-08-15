@@ -5,8 +5,20 @@ import { Component } from '@angular/core';
   template: `
   <h1>Recipe Box</h1>
   <h3>Today's Category: {{currentCategory}}</h3>
+  <div *ngIf="selectedRecipe">
+    <h3>Edit Recipe: {{selectedRecipe.title}}</h3>
+    <label>Enter Recipe Title:</label>
+    <input [(ngModel)]="selectedRecipe.title">
+    <label>Enter Recipe Ingredients:</label>
+    <input [(ngModel)]="selectedRecipe.ingredients">
+    <label>Enter Recipe Directions:</label>
+    <input [(ngModel)]="selectedRecipe.directions">
+    <button (click)="finishedEditing()">Done Editing</button>
+  </div>
+
   <ul>
     <li *ngFor="let currentRecipe of recipes">
+      <hr>
       <h3>{{currentRecipe.title}}</h3>
       <ul>
         <li *ngFor="let currentIngredient of currentRecipe.ingredients">
@@ -16,17 +28,6 @@ import { Component } from '@angular/core';
       {{currentDirection}}</p>
       <button (click)="editRecipe(currentRecipe)">Edit Recipe</button>
 
-      <div *ngIf="selectedRecipe">
-        <h3>Edit Recipe: {{selectedRecipe.title}}</h3>
-        <label>Enter Recipe Title:</label>
-        <input [(ngModel)]="selectedRecipe.title">
-        <label>Enter Recipe Ingredients:</label>
-        <input [(ngModel)]="selectedRecipe.ingredients">
-        <label>Enter Recipe Directions:</label>
-        <input [(ngModel)]="selectedRecipe.directions">
-        <button (click)="finishedEditing()">Done Editing</button>
-     </div>
-     <hr>
     </li>
   </ul>
   `
